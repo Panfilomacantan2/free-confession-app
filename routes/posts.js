@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const { getPosts, createPost } = require('../controllers/posts');
+const { getPosts, createPost, likePost } = require('../controllers/posts');
 
-router.get('/', getPosts).post('/', createPost);
+router.get('/', getPosts).post('/', createPost).put('/:id', likePost);
 
 module.exports = router;

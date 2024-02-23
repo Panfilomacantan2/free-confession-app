@@ -74,16 +74,25 @@ const resetFields = () => {
 const displayConfessions = async () => {
 	const confessionsContainer = document.querySelector('.confession-container');
 	const data = await fetchData();
+
 	let output = '';
 
 	if (data?.length > 0) {
-		data.forEach((confession) => {
+		data.forEach(async (confession) => {
 			const { _id, createdAt, codeName, message, avatar } = confession;
+
+			console.log({ codeName });
 
 			output += `<div class="confession-item">
 				<div class="confession-header">
 					<div class="img-box">
-						<img src="${avatar}" class="avatar" alt="" />
+						
+						<img
+						src=" https://api.dicebear.com/7.x/initials/svg?seed=${codeName} loading="lazy"
+						alt="avatar"
+					  />
+
+					 
 					</div>
 					<div class="details">
 						<div class="name">
@@ -99,8 +108,26 @@ const displayConfessions = async () => {
 				<div class="confession">
 					<p class="message"><b>Confession:</b>  <i class="fa fa-quote-left" aria-hidden="true"></i>  ${message}  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
 				</div>
+
+				
+				<div class="reply-form">
+					<form action="/reply/${_id}" method="POST">
+						<input type="text" name="reply" placeholder="Reply to this confession" required />
+						<button type="submit" class="reply-btn">Reply</button>
+					</form>
+				</div>
+				
+				
+				<button onclick="getReplies('${_id}')">View Replies</button>
+
+				
+
+
+
+				
 			</div>`;
 		});
+
 		confessionsContainer.scrollTop = confessionsContainer.scrollHeight - confessionsContainer.clientHeight;
 
 		confessionsContainer.innerHTML = output;
@@ -126,6 +153,19 @@ const showConfessions = () => {
 	} else {
 		showConfessionsBtn.innerText = 'Show Confessions';
 	}
+};
+
+const getReplies = async (id) => {
+	const replies = document.getElementById(id);
+	let output = '';
+	const url = await fetch(`/reply/${id}`);
+	const res = await url.json();
+
+	res.comments.forEach((comment) => {
+		output = `<li>${comment.text}</li>`;
+	});
+
+	replies.innerHTML = output;
 };
 
 document.addEventListener('DOMContentLoaded', displayConfessions);

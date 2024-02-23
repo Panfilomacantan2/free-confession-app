@@ -6,16 +6,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Confession</title>
 		<link rel="stylesheet" href="style.css" />
-		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+		<!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet" /> -->
 		<script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
+		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body>
 		<!-- SHOW BUTTON -->
-		<button id="showConfessions" class="show-confessions">Show Confessions</button>
+		<button id="showConfessions" class="bg-slate-800 text-white px-5 py-3 rounded-md mb-10">Show Confessions</button>
 
 		<div class="form-container">
-			<h3>Confession Wall</h3>
+			<h3>EVSUNISTA Confession Wall</h3>
 			<form autocomplete="off">
 				<div class="form-control">
 					<label><strong>Code Name</strong></label>
@@ -25,7 +26,7 @@
 					<label><strong>Message</strong></label>
 					<textarea id="messageBody" class="message-body"></textarea>
 				</div>
-				<button type="submit" id="submitMessageBtn">Send</button>
+				<button type="submit" id="submitMessageBtn" class="bg-slate-800 text-white text-center px-8 py-2 rounded-md w-full">Send</button>
 			</form>
 		</div>
 
