@@ -11,9 +11,9 @@
 		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
 		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
-	<body>
+	<body class="bg-slate-900">
 		<!-- SHOW BUTTON -->
-		<button id="showConfessions" class="bg-slate-800 text-white px-5 py-3 rounded-md mb-10">Show Confessions</button>
+		<button id="showConfessions" class="top-2 fixed text-white px-5 py-3 rounded-md mb-0 z-10 bg-gradient-to-r from-cyan-500 to-blue-500">Show Confessions</button>
 
 		<div class="form-container">
 			<h3>EVSUNISTA Confession Wall</h3>
@@ -26,11 +26,11 @@
 					<label><strong>Message</strong></label>
 					<textarea id="messageBody" class="message-body"></textarea>
 				</div>
-				<button type="submit" id="submitMessageBtn" class="bg-slate-800 text-white text-center px-8 py-2 rounded-md w-full">Send</button>
+				<button type="submit" id="submitMessageBtn" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-center px-8 py-2 rounded-md w-full">Send</button>
 			</form>
 		</div>
 
-		<div class="confession-container"></div>
+		<div class="confession-container bg-slate-900"></div>
 
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="https://momentjs.com/downloads/moment.js"></script>

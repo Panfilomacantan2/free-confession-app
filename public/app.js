@@ -11,6 +11,8 @@ const uuidv4 = () => {
 	});
 };
 
+const confessionsArr = [];
+
 const fetchData = async () => {
 	isLoading = true;
 	checkLoading(isLoading);
@@ -73,59 +75,60 @@ const resetFields = () => {
 
 const displayConfessions = async () => {
 	const confessionsContainer = document.querySelector('.confession-container');
-	const data = await fetchData();
+	let data = await fetchData();
 
 	let output = '';
 
 	if (data?.length > 0) {
-		data.forEach(async (confession) => {
+		data.reverse().map(async (confession) => {
 			const { _id, createdAt, codeName, message, avatar } = confession;
 
 			console.log({ codeName });
 
-			output += `<div class="confession-item">
-				<div class="confession-header">
-					<div class="img-box">
-						
-						<img
-						src=" https://api.dicebear.com/7.x/initials/svg?seed=${codeName} loading="lazy"
-						alt="avatar"
-					  />
+			output += `<div class="hover:bg-slate-800 shadow-lg shadow-bg-gray-100 rounded-sm 	border 		border-slate-800 p-5 oveflow-y-scroll">
+											<div class="flex items-center justify-center w-full bg-slate-800 px-3 py-1 rounded-md">
+													<div class="w-10 h-10 rounded-full overflow-hidden ">
+														
+														<img
+														src=" https://api.dicebear.com/7.x/initials/svg?seed=${codeName} loading="lazy"
+														alt="avatar"
+													/>
+																		
+												</div>
+													<div class="details">
+															<div class="name">
+																<h5 class="text-sm text-gray-300">-${codeName.toUpperCase()}</h5>
+																
+															</div>
 
-					 
-					</div>
-					<div class="details">
-						<div class="name">
-							<h4>${codeName.toUpperCase()}</h4>
-						</div>
-						<div class="date">
-							<h4>${moment(createdAt).format('MMMM DD, YYYY | HH:mm:ssA')}</h4>
-						</div>
-					</div>
-				</div>
-				<hr/>
+														
+												
+														</div>
+														<div class="date">
+														<p class="text-xs text-gray-400 text-right">${new Date(createdAt).toDateString()}</p>
 
-				<div class="confession">
-					<p class="message"><b>Confession:</b>  <i class="fa fa-quote-left" aria-hidden="true"></i>  ${message}  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
-				</div>
+													
+														<p class="text-xs text-gray-400 text-right">${moment(createdAt).fromNow()}</p>
+													</div>
+												
+												</div>
+									<hr/>
 
-				
-				<div class="reply-form">
-					<form action="/reply/${_id}" method="POST">
-						<input type="text" name="reply" placeholder="Reply to this confession" required />
-						<button type="submit" class="reply-btn">Reply</button>
-					</form>
-				</div>
-				
-				
-				<button onclick="getReplies('${_id}')">View Replies</button>
+									<div class="overflow-auto">
+										<p class="message text-gray-400"><b class="text-gray-300">Confession:</b>  <i class="fa fa-quote-left" aria-hidden="true"></i>  ${message}  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+									</div>
 
-				
+											
+								</div>`;
 
+			// <div class="reply-form">
+			// 		<form action="/reply/${_id}" method="POST">
+			// 			<input type="text" name="reply" placeholder="Reply to this confession" required />
+			// 			<button type="submit" class="reply-btn">Reply</button>
+			// 		</form>
+			// 	</div>
 
-
-				
-			</div>`;
+			// 	<button onclick="getReplies('${_id}')">View Replies</button>
 		});
 
 		confessionsContainer.scrollTop = confessionsContainer.scrollHeight - confessionsContainer.clientHeight;
