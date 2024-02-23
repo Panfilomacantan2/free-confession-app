@@ -45,7 +45,7 @@ const addNewConfession = async (e) => {
 	const codeName = document.querySelector('#codeName');
 	const messageBody = document.querySelector('#messageBody').value.trim();
 
-	if (!codeName || !messageBody) {
+	if (!codeName?.length > 6 || !codeName || !messageBody) {
 		swal('Your message is not valid.', 'Please try again.', 'error');
 		return;
 	}
@@ -85,7 +85,7 @@ const displayConfessions = async () => {
 
 			console.log({ codeName });
 
-			output += `<div class="hover:bg-slate-800 shadow-lg shadow-bg-gray-100 rounded-sm 	border 		border-slate-800 p-5 oveflow-y-scroll">
+			output += `<div class="hover:bg-slate-800 shadow-lg shadow-bg-gray-100 rounded-sm 	border 		border-slate-800 p-5 overflow-hidden">
 											<div class="flex items-center justify-center w-full bg-slate-800 px-3 py-1 rounded-md">
 													<div class="w-10 h-10 rounded-full overflow-hidden ">
 														
@@ -112,10 +112,10 @@ const displayConfessions = async () => {
 													</div>
 												
 												</div>
-									<hr/>
+									<hr class"bg-white"/>
 
-									<div class="overflow-auto">
-										<p class="message text-gray-400"><b class="text-gray-300">Confession:</b>  <i class="fa fa-quote-left" aria-hidden="true"></i>  ${message}  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+									<div class="confession overflow-y-scroll mt-4  ">
+										<p class="message text-gray-400 max-h-48"><b class="text-gray-300">Confession:</b>  <i class="fa fa-quote-left" aria-hidden="true"></i>  ${message}  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
 									</div>
 
 											

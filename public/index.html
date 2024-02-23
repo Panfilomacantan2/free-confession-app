@@ -15,23 +15,40 @@
 		<!-- SHOW BUTTON -->
 		<button id="showConfessions" class="top-2 fixed text-white px-5 py-3 rounded-md mb-0 z-10 bg-gradient-to-r from-cyan-500 to-blue-500">Show Confessions</button>
 
-		<div class="form-container">
-			<h3>EVSUNISTA Confession Wall</h3>
+		<div class="form-container rounded-sm bg-slate-800">
+			<h4 class="w-full cursive bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-10 py-2 text-white text-center rounded-sm mb-5">EVSUNISTA Confession Wall</h4>
 			<form autocomplete="off">
 				<div class="form-control">
-					<label><strong>Code Name</strong></label>
-					<input type="text" id="codeName" autofocus />
+					<label class="text-gray-400"><strong>Code Name*</strong></label>
+					<input
+						type="text"
+						id="codeName"
+						class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+						autofocus
+						placeholder="Enter your code name"
+					/>
 				</div>
 				<div class="form-control">
-					<label><strong>Message</strong></label>
-					<textarea id="messageBody" class="message-body"></textarea>
+					<label class="text-gray-400"><strong>Message*</strong></label>
+					<textarea
+						id="messageBody"
+						class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+						placeholder="Enter your message"
+					></textarea>
 				</div>
-				<button type="submit" id="submitMessageBtn" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-center px-8 py-2 rounded-md w-full">Send</button>
+				<button type="submit" id="submitMessageBtn" class="mt-10 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-center px-8 py-2 rounded-md w-full">Send</button>
 			</form>
 		</div>
 
 		<div class="confession-container bg-slate-900"></div>
 
+		<footer class="bg-dark text-center text-gray-500 fixed bottom-0 p-5 text-xs">
+			Copyright © <span id="year"></span> <br />
+			Panfilo Panong Macantan <br />
+			All Rights Reserved <br />
+			panfilo.dev
+		</footer>
+		<script>document.querySelector('#year').innerText = new Date().getFullYear()</script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="https://momentjs.com/downloads/moment.js"></script>
 		<script src="./app.js"></script>
