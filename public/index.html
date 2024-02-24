@@ -13,7 +13,10 @@
 	</head>
 	<body class="bg-slate-900">
 		<!-- SHOW BUTTON -->
-		<button id="showConfessions" class="top-2 fixed text-white px-5 py-3 rounded-md mb-0 z-10 bg-gradient-to-r from-cyan-500 to-blue-500">Show Confessions</button>
+
+		<div class="z-20 w-full fixed p-5 top-0 flex items-center justify-center bg-slate-900">
+			<button id="showConfessions" class="top-0 text-white px-5 py-3 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500">Show Confessions</button>
+		</div>
 
 		<div class="form-container rounded-sm bg-slate-800">
 			<h4 class="w-full cursive bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-10 py-2 text-white text-center rounded-sm mb-5">EVSUNISTA Confession Wall</h4>
@@ -23,7 +26,7 @@
 					<input
 						type="text"
 						id="codeName"
-						class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+						class="placeholder:text-slate-400 block bg-slate-700 w-full border border-slate-800 rounded-sm py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
 						autofocus
 						placeholder="Enter your code name"
 					/>
@@ -32,15 +35,15 @@
 					<label class="text-gray-400"><strong>Message*</strong></label>
 					<textarea
 						id="messageBody"
-						class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+						class="placeholder:text-slate-400 block bg-slate-700 w-full h-32 border border-slate-800 rounded-sm py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
 						placeholder="Enter your message"
 					></textarea>
 				</div>
-				<button type="submit" id="submitMessageBtn" class="mt-10 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-center px-8 py-2 rounded-md w-full">Send</button>
+				<button type="submit" id="submitMessageBtn" class="mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-center px-8 py-2 rounded-md w-full">Send</button>
 			</form>
 		</div>
 
-		<div class="confession-container bg-slate-900"></div>
+		<div class="confession-container bg-slate-900 z-10"></div>
 
 		<footer class="bg-dark text-center text-gray-500 fixed bottom-0 p-5 text-xs">
 			Copyright © <span id="year"></span> <br />
@@ -48,7 +51,9 @@
 			All Rights Reserved <br />
 			panfilo.dev
 		</footer>
-		<script>document.querySelector('#year').innerText = new Date().getFullYear()</script>
+		<script>
+			document.querySelector('#year').innerText = new Date().getFullYear();
+		</script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="https://momentjs.com/downloads/moment.js"></script>
 		<script src="./app.js"></script>

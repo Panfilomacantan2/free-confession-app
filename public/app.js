@@ -1,7 +1,5 @@
 let isLoading = false;
-
 const submitMessageBtn = document.querySelector('#submitMessageBtn');
-
 // UUID
 const uuidv4 = () => {
 	return `id-${new Date().getFullYear()}-xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx`.replace(/[xy]/g, function (c) {
@@ -12,7 +10,6 @@ const uuidv4 = () => {
 };
 
 const confessionsArr = [];
-
 const fetchData = async () => {
 	isLoading = true;
 	checkLoading(isLoading);
@@ -83,16 +80,20 @@ const displayConfessions = async () => {
 		data.reverse().map(async (confession) => {
 			const { _id, createdAt, codeName, message, avatar } = confession;
 
-			console.log({ codeName });
+			// console.log({ codeName });
 
-			output += `<div class="hover:bg-slate-800 shadow-lg shadow-bg-gray-100 rounded-sm 	border 		border-slate-800 p-5 overflow-hidden">
+			output += `<div class="hover:bg-slate-800 shadow-lg shadow-bg-gray-100 rounded-sm z-10	border 	border-slate-800 p-5 overflow-hidden">
 											<div class="flex items-center justify-center w-full bg-slate-800 px-3 py-1 rounded-md">
 													<div class="w-10 h-10 rounded-full overflow-hidden ">
 														
 														<img
-														src=" https://api.dicebear.com/7.x/initials/svg?seed=${codeName} loading="lazy"
+														src="https://api.dicebear.com/7.x/personas/svg?seed=Felix=${codeName}
 														alt="avatar"
+
+
 													/>
+
+													
 																		
 												</div>
 													<div class="details">
@@ -112,10 +113,11 @@ const displayConfessions = async () => {
 													</div>
 												
 												</div>
-									<hr class"bg-white"/>
+												<hr class="h-px my-2 bg-gray-700 border-0 dark:bg-gray-700">
+
 
 									<div class="confession overflow-y-scroll mt-4  ">
-										<p class="message text-gray-400 max-h-48"><b class="text-gray-300">Confession:</b>  <i class="fa fa-quote-left" aria-hidden="true"></i>  ${message}  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+										<p class="message text-gray-400 max-h-48 text-sm"><b class="text-gray-300">Confession:</b>   ${message} </p>
 									</div>
 
 											
