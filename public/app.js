@@ -176,7 +176,7 @@ const getReplies = async (id) => {
 document.addEventListener('DOMContentLoaded', displayConfessions);
 showConfessionsBtn.addEventListener('click', showConfessions);
 
-const end = Date.now() + 5 * 1000;
+const end = Date.now() + 2 * 1000;
 
 // go Buckeyes!
 var colors = ['#DEBF39', '#39DE6D', '#3957DE', '#DE39AA'](
