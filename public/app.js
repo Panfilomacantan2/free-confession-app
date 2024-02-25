@@ -98,7 +98,7 @@ const displayConfessions = async () => {
 												</div>
 													<div class="details">
 															<div class="name">
-																<h5 class="text-sm text-gray-300">-${codeName.toUpperCase()}</h5>
+																<h6 class="text-[10px]   font-bold text-gray-300">-${codeName.toUpperCase()}</h6>
 																
 															</div>
 

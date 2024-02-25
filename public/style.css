@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
 	--primary: rgba(15, 23, 42, 0.3);
 }
@@ -120,10 +119,6 @@ form .form-control {
 
 .details {
 	flex: 1;
-	text-align: left;
-	margin-left: 10px;
-	color: rgba(0, 0, 0, 0.6);
-	font-weight: 300;
 }
 
 .date {
@@ -134,7 +129,6 @@ form .form-control {
 .message {
 	word-wrap: break-word;
 }
-
 
 .confession::-webkit-scrollbar {
 	width: 5px;
