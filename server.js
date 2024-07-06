@@ -25,5 +25,4 @@ app.use((req, res, next) => {
 
 app.use('/posts', require('./routes/posts'));
 app.use('/reply', require('./routes/reply'));
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -32,7 +32,7 @@ const checkLoading = (isLoaded) => {
 	noResult.appendChild(noResultMsg);
 	confessionsContainer.appendChild(noResult);
 
-	confessionsContainer.scrollTop = confessionsContainer.scrollHeight - 400;
+	// confessionsContainer.scrollTop = confessionsContainer.scrollHeight - 400;
 };
 
 const addNewConfession = async (e) => {
@@ -58,7 +58,7 @@ const addNewConfession = async (e) => {
 			resetFields();
 			displayConfessions();
 			codeName.focus();
-			confessionsContainer.scrollTop = confessionsContainer.scrollHeight - confessionsContainer.clientHeight;
+			// confessionsContainer.scrollTop = confessionsContainer.scrollHeight - confessionsContainer.clientHeight;
 		});
 	submitMessageBtn.innerText = 'Sending...';
 };
@@ -74,6 +74,8 @@ const displayConfessions = async () => {
 	const confessionsContainer = document.querySelector('.confession-container');
 	let data = await fetchData();
 
+	console.log({ data });
+
 	let output = '';
 
 	if (data?.length > 0) {
@@ -83,6 +85,7 @@ const displayConfessions = async () => {
 			// console.log({ codeName });
 
 			output += `<div class="hover:bg-slate-800 shadow-lg shadow-bg-gray-100 rounded-sm z-10	border 	border-slate-800 p-5 overflow-hidden">
+
 											<div class="flex items-center justify-center w-full bg-slate-800 px-3 py-1 rounded-md">
 													<div class="w-10 h-10 rounded-full overflow-hidden ">
 														
@@ -119,21 +122,18 @@ const displayConfessions = async () => {
 									<div class="confession overflow-y-scroll mt-4  ">
 										<p class="message text-gray-400 max-h-48 text-sm"><b class="text-gray-300">Confession:</b>   ${message} </p>
 									</div>
+						
+									
 
+									
+										
+										<a href="javascript:void(0)" id="postId" onclick="deleteConfession('${_id}')"  class="text-gray-200 px-2 py-px bg-red-700 max-w-fit rounded-sm text-right mt-5 text-sm ">delete</a>
+									
 											
 								</div>`;
-
-			// <div class="reply-form">
-			// 		<form action="/reply/${_id}" method="POST">
-			// 			<input type="text" name="reply" placeholder="Reply to this confession" required />
-			// 			<button type="submit" class="reply-btn">Reply</button>
-			// 		</form>
-			// 	</div>
-
-			// 	<button onclick="getReplies('${_id}')">View Replies</button>
 		});
 
-		confessionsContainer.scrollTop = confessionsContainer.scrollHeight - confessionsContainer.clientHeight;
+		// confessionsContainer.scrollTop = confessionsContainer.scrollHeight - confessionsContainer.clientHeight;
 
 		confessionsContainer.innerHTML = output;
 	} else {
@@ -173,31 +173,53 @@ const getReplies = async (id) => {
 	replies.innerHTML = output;
 };
 
+const deleteConfession = async (id) => {
+	const confessionsContainer = document.querySelector('.confession-container');
+
+	const url = await fetch(`/posts/${id}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+	// check if the response is okay
+	if (url.ok) {
+		swal('Confession deleted successfully.', '', 'success');
+		displayConfessions();
+
+		const res = await url.json();
+	}
+	confessionsContainer.scrollIntoView({
+		behavior: 'smooth',
+		block: 'nearest',
+		inline: 'start',
+	});
+};
+
 document.addEventListener('DOMContentLoaded', displayConfessions);
 showConfessionsBtn.addEventListener('click', showConfessions);
 
 const end = Date.now() + 2 * 1000;
 
 // go Buckeyes!
-var colors = ['#DEBF39', '#39DE6D', '#3957DE', '#DE39AA'](
-	(function frame() {
-		confetti({
-			particleCount: 4,
-			angle: 60,
-			spread: 55,
-			origin: { x: 0 },
-			colors: colors,
-		});
-		confetti({
-			particleCount: 4,
-			angle: 120,
-			spread: 55,
-			origin: { x: 1 },
-			colors: colors,
-		});
+let colors = ['#DEBF39', '#39DE6D', '#3957DE', '#DE39AA']
+(function frame() {
+	confetti({
+		particleCount: 4,
+		angle: 60,
+		spread: 55,
+		origin: { x: 0 },
+		colors: colors,
+	});
+	confetti({
+		particleCount: 4,
+		angle: 120,
+		spread: 55,
+		origin: { x: 1 },
+		colors: colors,
+	});
 
-		if (Date.now() < end) {
-			requestAnimationFrame(frame);
-		}
-	})(),
-);
+	if (Date.now() < end) {
+		requestAnimationFrame(frame);
+	}
+})();

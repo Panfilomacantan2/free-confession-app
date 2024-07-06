@@ -10,6 +10,8 @@ const getPosts = async (req, res) => {
 
 		const response = await needle('get', `${BASE_URL}`, { json: true });
 
+		console.log(posts);
+
 		res.send(response.body);
 	} catch (err) {
 		res.json({ message: err });
@@ -40,8 +42,6 @@ const likePost = async (req, res) => {
 		// 	return res.status(400).json({ msg: 'Post already liked' });
 		// }
 
-		
-
 		const newLike = new Like({ post: post._id, likes: req.body.likes });
 
 		post.likes.push(newLike);
@@ -56,7 +56,23 @@ const likePost = async (req, res) => {
 	}
 };
 
+//  Delete post
+const deletePost = (req, res) => {
+	const { id } = req.params;
+
+	Post.findByIdAndDelete(id, (err, post) => {
+		if (err) {
+			res.status(500).json({ message: `Error: ${err}` });
+		} else {
+			res.status(200).json({ message: `Confession deleted successfully` });
+		}
+	});
+
+	console.log(id);
+};
+
 module.exports = {
+	deletePost,
 	getPosts,
 	createPost,
 	likePost,
