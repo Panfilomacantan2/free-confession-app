@@ -74,7 +74,7 @@ const displayConfessions = async () => {
 	const confessionsContainer = document.querySelector('.confession-container');
 	let data = await fetchData();
 
-	console.log({ data });
+	// console.log({ data });
 
 	let output = '';
 
@@ -127,11 +127,13 @@ const displayConfessions = async () => {
 
 									
 										
-										<a href="javascript:void(0)" id="postId" onclick="deleteConfession('${_id}')"  class="text-gray-200 px-2 py-px bg-red-700 max-w-fit rounded-sm text-right mt-5 text-sm ">delete</a>
+									
 									
 											
 								</div>`;
 		});
+
+		// <a href="javascript:void(0)" id="postId" onclick="deleteConfession('${_id}')"  class="text-gray-200 px-2 py-px bg-red-700 max-w-fit rounded-sm text-right mt-5 text-sm ">delete</a>
 
 		// confessionsContainer.scrollTop = confessionsContainer.scrollHeight - confessionsContainer.clientHeight;
 
@@ -202,8 +204,7 @@ showConfessionsBtn.addEventListener('click', showConfessions);
 const end = Date.now() + 2 * 1000;
 
 // go Buckeyes!
-let colors = ['#DEBF39', '#39DE6D', '#3957DE', '#DE39AA']
-(function frame() {
+let colors = ['#DEBF39', '#39DE6D', '#3957DE', '#DE39AA'](function frame() {
 	confetti({
 		particleCount: 4,
 		angle: 60,
