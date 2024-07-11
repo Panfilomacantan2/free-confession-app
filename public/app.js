@@ -84,7 +84,7 @@ const displayConfessions = async () => {
 
 			// console.log({ codeName });
 
-			output += `<div class="hover:bg-slate-800 shadow-lg shadow-bg-gray-100 rounded-sm z-10	border 	border-slate-800 p-5 overflow-hidden">
+			output += `<div class="hover:-translate-y-3 hover:border-gray-500 shadow-lg shadow-bg-gray-100 rounded-sm z-10	border 	border-slate-800 p-5 overflow-hidden">
 
 											<div class="flex items-center justify-center w-full bg-slate-800 px-3 py-1 rounded-md">
 													<div class="w-10 h-10 rounded-full overflow-hidden ">
@@ -92,6 +92,7 @@ const displayConfessions = async () => {
 														<img
 														src="https://api.dicebear.com/7.x/personas/svg?seed=Felix=${codeName}
 														alt="avatar"
+														loading="lazy"
 
 
 													/>

@@ -30,7 +30,6 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 20px 30px;
 	flex-direction: column;
 }
 
@@ -155,13 +154,17 @@ form .form-control {
 }
 
 .no-result {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	position: relative;
+	top: 0;
+	left: 0;
 	font-size: 20px;
 	font-weight: 500;
 	color: rgba(255, 255, 255, 0.5);
+	width: 100%;
+	min-height: 100vh;
+	z-index: 100;
+	text-align: center;
+
 }
 
 .img-box {
@@ -186,7 +189,7 @@ form .form-control {
 	background: #fff;
 	top: 50%;
 	left: 50%;
-	z-index: 999;
+	z-index: 20;
 	transform: translateY(-50%) translateX(-50%);
 	border-radius: 5px;
 }
